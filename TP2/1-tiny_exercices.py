@@ -4,24 +4,17 @@ from string import ascii_lowercase
 
 
 def sum_int(n: int):
-    if n == 0:
-        return 0
-    return n + sum_int(n - 1)
+    return 0 if n == 0 else n + sum_int(n - 1)
 
 
 def sum_array(t: array, n: int):
-    if n == 1:
-        return t[n - 1]
-    return t[n - 1] + sum_array(t, n - 1)
+    return t[n - 1] if n == 1 else t[n - 1] + sum_array(t, n - 1)
 
 
 def complete_bin(t: array, n: int):
     if n == 0:
         return t
-    if t[n - 1] == 1:
-        t[n - 1] = 0
-    else:
-        t[n - 1] = 1
+    t[n - 1] = 0 if t[n - 1] == 1 else 1
     return complete_bin(t, n - 1)
 
 
@@ -32,38 +25,28 @@ def reverse(t, n, i=0):
 
 
 def sum_array_rec(t: array, n: int, i: int = 0):
-    if i == n - 1:
-        return t[i]
-    return t[i] + sum_array_rec(t, n, i + 1)
+    return t[i] if i == n - 1 else t[i] + sum_array_rec(t, n, i + 1)
 
 
 def is_sorted(t: array, n: int):
     if n == 1:
         return True
-    if t[n - 1] >= t[n - 2]:
-        return is_sorted(t, n - 1)
-    return False
+    return is_sorted(t, n - 1) if t[n - 1] >= t[n - 2] else False
 
 
 def pair(n: int):
-    if n == 1:
-        return "impair"
-    return impair(n - 1)
+    return "impair" if n == 1 else impair(n - 1)
 
 
 def impair(n: int):
-    if n == 1:
-        return "pair"
-    return pair(n - 1)
+    return "pair" if n == 1 else pair(n - 1)
 
 
 def maximum(t: array, n: int):
     if n == 1:
         return t[n - 1]
     maxi = maximum(t, n - 1)
-    if maxi < t[n - 1]:
-        return t[n - 1]
-    return maxi
+    return t[n - 1] if maxi < t[n - 1] else maxi
 
 
 def prime_number(n: int, i: int = 2):

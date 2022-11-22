@@ -20,10 +20,7 @@ def test_roll_dices():
 
 # Sum values
 def sum_values(t: array, n: int) -> int:
-    total = 0
-    for i in range(n):
-        total += t[i]
-    return total
+    return sum(t[i] for i in range(n))
 
 
 def test_sum_values():
@@ -34,11 +31,7 @@ def test_sum_values():
 
 # Number of dice with same value
 def number_of_dice_with_same_value(t: array, n: int, value: int) -> int:
-    result = 0
-    for i in range(n):
-        if t[i] == value:
-            result += 1
-    return result
+    return sum(t[i] == value for i in range(n))
 
 
 def test_number_of_dice_with_same_value():
@@ -151,10 +144,7 @@ def search_sequence(t: array, n: int):
         success = True
         for _ in range(n):
             v += 1
-            s = False
-            for i in range(n):
-                if t[i] == v:
-                    s = True
+            s = any(t[i] == v for i in range(n))
             if not s:
                 success = False
                 break

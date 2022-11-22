@@ -5,10 +5,7 @@ def occurrence_max(t: array, n: int):
     n_plus_present = 0
     e_plus_present = -1
     for i in range(n):
-        nbr = 0
-        for j in range(i, n):
-            if t[i] == t[j]:
-                nbr += 1
+        nbr = sum(t[i] == t[j] for j in range(i, n))
         if nbr > n_plus_present:
             n_plus_present = nbr
             e_plus_present = t[i]
