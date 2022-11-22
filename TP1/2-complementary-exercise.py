@@ -1,10 +1,7 @@
 def number_sections(t, nt, s, ns):
     results = 0
     for i in range(nt - ns):
-        valid = 0
-        for j in range(ns):
-            if s[j] == t[i + j]:
-                valid += 1
+        valid = sum(s[j] == t[i + j] for j in range(ns))
         if valid == ns:
             results += 1
     return results

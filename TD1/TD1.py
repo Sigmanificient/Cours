@@ -48,10 +48,7 @@ def deleteFirstInstance(t: array, n: int, elt: any):
 
 def unduplicated(t, n):
     for i in range(n):
-        occurence = 0
-        for j in range(n):
-            if t[i] == t[j]:
-                occurence += 1
+        occurence = sum(t[i] == t[j] for j in range(n))
         if occurence > 1:
             return False
     return True

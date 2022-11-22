@@ -20,21 +20,16 @@ def aligner_gauche(text, n, N):
         c[i] = 1e12
         for j in range(i, n):
             words_sum = sum_characters_words(text, j + 1, i)
-            if (j - i) + words_sum <= N:
-                if (N - j + i - words_sum) ** 3 + c[j + 1] < c[i]:
-                    c[i] = (N - j + i - words_sum) ** 3 + c[j + 1]
+            if (j - i) + words_sum <= N and (N - j + i - words_sum) ** 3 + c[
+                j + 1
+            ] < c[i]:
+                c[i] = (N - j + i - words_sum) ** 3 + c[j + 1]
     print(c)
     return c[0]
 
 
 def sum_characters_words(text, n, i):
-    if i >= n+1:
-        return - 1
-
-    somme = 0
-    for j in range(i, n):
-        somme += len(text[j])
-    return somme
+    return - 1 if i >= n+1 else sum(len(text[j]) for j in range(i, n))
 
 
 def tests():

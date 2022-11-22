@@ -3,9 +3,7 @@ from timeit import timeit
 
 
 def fibo_recursive(n):
-    if n in (0, 1):
-        return n
-    return fibo_recursive(n - 1) + fibo_recursive(n - 2)
+    return n if n in (0, 1) else fibo_recursive(n - 1) + fibo_recursive(n - 2)
 
 
 def fibo_iterative(n):
